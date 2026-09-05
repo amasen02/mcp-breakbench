@@ -151,6 +151,12 @@ def test_stderr_capture_accepts_only_bounded_bytes() -> None:
     assert capture.getvalue().endswith("...[STDERR TRUNCATED]")
 
 
+def test_stderr_capture_normalizes_platform_newlines_and_redacts() -> None:
+    capture = BoundedTextCapture(128, Redactor(("secret-value",)))
+    capture.write_bytes(b"first\r\nsecret-value\rsecond\n")
+    assert capture.getvalue() == "first\n[REDACTED]\nsecond\n"
+
+
 def test_snapshot_detects_conservative_rename_remove_and_change() -> None:
     schema = {"type": "object"}
 

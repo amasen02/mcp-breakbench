@@ -70,7 +70,8 @@ class BoundedTextCapture:
         return self._text
 
     def write_bytes(self, data: bytes, truncated: bool = False) -> None:
-        clean = self.redactor.text(data.decode("utf-8", errors="replace"))
+        decoded = data.decode("utf-8", errors="replace").replace("\r\n", "\n").replace("\r", "\n")
+        clean = self.redactor.text(decoded)
         marker = "...[STDERR TRUNCATED]" if truncated else ""
         marker_bytes = marker.encode("utf-8")
         room = max(0, self.max_bytes - len(marker_bytes))

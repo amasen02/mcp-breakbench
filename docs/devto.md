@@ -44,8 +44,8 @@ Receipts are deterministic: timestamps and durations are omitted. Text capture i
 
 The lab favors finite, inspectable cases over load testing. JSON Schema checks declarations and values, not business semantics, idempotency, or safety. Redaction handles common patterns and caller-supplied exact values; encoded or unusual secrets may escape detection. Rename detection requires one unique identical contract apart from the name, so a rename plus schema change appears as removal plus addition. Initialization and complete discovery have separate deadlines, with hard page and tool-count ceilings.
 
-For an owner exercise, add a synthetic tool to the fixture server, save the old snapshot, change its schema, and explain the resulting receipt without reading the implementation. Then add a case that proves a read-only annotation does not authorize a call. Inspect `faulty.json` and `faulty.html` before consulting `docs/interview.md`.
+For an owner exercise, add a synthetic tool to the fixture server, save the old snapshot, change its schema, and explain the resulting receipt without reading the implementation. Then add a case that proves a read-only annotation does not authorize a call. Inspect `faulty.json` and `faulty.html` before consulting `docs/interview.md`, which ties the exercise to the concrete runner and fixture code.
 
-The repository was built with AI assistance from a user-directed brief. Tests, deterministic reports, and limitations are included so the behavior can be checked directly. Local verification recorded 19 passing tests with the pinned Python 3.12.9 environment; no production server, adoption, or security certification is claimed.
+The repository was built with AI assistance from a user-directed brief. Tests, deterministic reports, and limitations are included so the behavior can be checked directly. Local verification recorded 20 passing tests with the pinned Python 3.12.9 environment; no production server, adoption, or security certification is claimed.
 
-Repository: https://github.com/amasen02/mcp-breakbench (publication pending).
+Repository: [mcp-breakbench](https://github.com/amasen02/mcp-breakbench).

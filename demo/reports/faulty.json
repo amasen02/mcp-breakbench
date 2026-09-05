@@ -193,7 +193,7 @@
   "schema_version": "1",
   "server": "configured stdio server",
   "session_restarts": 0,
-  "stderr": "fixture stderr Bearer [REDACTED]\r\n",
+  "stderr": "fixture stderr Bearer [REDACTED]\n",
   "system_error": null,
   "tools": [
     {
