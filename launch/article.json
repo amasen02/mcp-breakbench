@@ -1,0 +1,5 @@
+{
+  "title": "Reproduce an MCP tool failure before blaming the agent",
+  "tags": ["ai", "mcp", "python", "testing"],
+  "series": "Agent failures you can reproduce"
+}

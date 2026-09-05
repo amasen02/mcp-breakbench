@@ -1,0 +1,578 @@
+{
+  "cases": [
+    {
+      "arguments": {
+        "message": 42
+      },
+      "content": null,
+      "detail": "message: 42 is not of type 'string'",
+      "id": "invalid-input",
+      "outcome": "INPUT_VALIDATION_FAILED",
+      "structured_content": null,
+      "tool": "echo"
+    },
+    {
+      "arguments": {
+        "seconds": 0.25
+      },
+      "content": null,
+      "detail": "Request 'tools/call' timed out",
+      "id": "timeout",
+      "outcome": "CALL_TIMEOUT",
+      "structured_content": null,
+      "tool": "slow"
+    },
+    {
+      "arguments": {
+        "message": "recovered"
+      },
+      "content": [
+        {
+          "text": "recovered",
+          "type": "text"
+        }
+      ],
+      "detail": "contract satisfied",
+      "id": "timeout-recovery",
+      "outcome": "PASS",
+      "structured_content": {
+        "message": "recovered"
+      },
+      "tool": "recovery_echo"
+    },
+    {
+      "arguments": {},
+      "content": [
+        {
+          "text": "synthetic tool failure",
+          "type": "text"
+        }
+      ],
+      "detail": "server returned isError=true",
+      "id": "tool-error",
+      "outcome": "TOOL_RESULT_ERROR",
+      "structured_content": null,
+      "tool": "fail"
+    },
+    {
+      "arguments": {},
+      "content": null,
+      "detail": "tool not in explicit allowlist",
+      "id": "annotation-is-not-authorization",
+      "outcome": "SAFE_SKIP_NOT_ALLOWLISTED",
+      "structured_content": null,
+      "tool": "readonly_trap"
+    },
+    {
+      "arguments": {},
+      "content": [
+        {
+          "text": "0",
+          "type": "text"
+        }
+      ],
+      "detail": "contract satisfied",
+      "id": "trap-was-not-called",
+      "outcome": "PASS",
+      "structured_content": {
+        "count": 0
+      },
+      "tool": "call_count"
+    },
+    {
+      "arguments": {
+        "token": "[REDACTED]"
+      },
+      "content": [
+        {
+          "text": "Bearer [REDACTED]",
+          "type": "text"
+        }
+      ],
+      "detail": "contract satisfied",
+      "id": "redaction",
+      "outcome": "PASS",
+      "structured_content": {
+        "nested": {
+          "secret": "[REDACTED]"
+        },
+        "token": "[REDACTED]"
+      },
+      "tool": "secret_echo"
+    },
+    {
+      "arguments": {},
+      "content": null,
+      "detail": "Invalid structured content returned by tool wrong_output: 'not-an-integer' is not of type 'integer'\n\nFailed validating 'type' in schema['properties']['count']:\n    {'type': 'integer'}\n\nOn instance['count']:\n    'not-an-integer'",
+      "id": "schema-mismatch",
+      "outcome": "SDK_OUTPUT_SCHEMA_REJECTED",
+      "structured_content": null,
+      "tool": "wrong_output"
+    }
+  ],
+  "connections_opened": 1,
+  "drift": [
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "call_count"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "fail"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "html_echo"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "local_ref"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "readonly_trap"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "recovery_echo"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "remote_ref"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "secret_echo"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "slow"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "sum"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_ADDED",
+      "tool": "wrong_output"
+    },
+    {
+      "details": {
+        "fields": [
+          "input_schema",
+          "output_schema"
+        ]
+      },
+      "kind": "TOOL_CHANGED",
+      "tool": "changing"
+    },
+    {
+      "details": null,
+      "kind": "TOOL_REMOVED",
+      "tool": "will_remove"
+    },
+    {
+      "details": {
+        "new_name": "renamed_echo"
+      },
+      "kind": "TOOL_RENAMED",
+      "tool": "legacy_echo"
+    }
+  ],
+  "schema_version": "1",
+  "server": "configured stdio server",
+  "session_restarts": 0,
+  "stderr": "fixture stderr Bearer [REDACTED]\r\n",
+  "system_error": null,
+  "tools": [
+    {
+      "annotations": null,
+      "description": "Synthetic call_count fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "call_count",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "count"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic changing fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "changing",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic echo fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic fail fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "fail",
+      "output_schema": null,
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic html_echo fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "html_echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic local_ref fixture",
+      "input_schema": {
+        "$defs": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "local_ref",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "description": "Synthetic readonly_trap fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "readonly_trap",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "count"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic recovery_echo fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "recovery_echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic remote_ref fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "remote_ref",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "$ref": "https://example.invalid/schema.json"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic renamed contract fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "renamed_echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic secret_echo fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token"
+        ],
+        "type": "object"
+      },
+      "name": "secret_echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "nested": {
+            "type": "object"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token",
+          "nested"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic slow fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "seconds": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "seconds"
+        ],
+        "type": "object"
+      },
+      "name": "slow",
+      "output_schema": null,
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic sum fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "a": {
+            "type": "integer"
+          },
+          "b": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "a",
+          "b"
+        ],
+        "type": "object"
+      },
+      "name": "sum",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "sum": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sum"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic wrong_output fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "wrong_output",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "count"
+        ],
+        "type": "object"
+      },
+      "title": null
+    }
+  ]
+}

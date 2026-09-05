@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mcp-breakbench report</title><style>
+body{font:16px system-ui;max-width:70rem;margin:2rem auto;padding:0 1rem;color:#17202a}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid #ccd;padding:.55rem;text-align:left}
+code{background:#eef3f7;padding:.1rem .25rem}
+pre{white-space:pre-wrap;background:#f5f6f7;padding:1rem}
+</style></head><body><h1>mcp-breakbench report</h1>
+<p>Server command: <code>configured stdio server</code></p>
+<p>This report is interoperability evidence, not a security certification.</p>
+<h2>Contract drift</h2><ul><li><code>TOOL_ADDED</code> call_count</li><li><code>TOOL_ADDED</code> fail</li><li><code>TOOL_ADDED</code> html_echo</li><li><code>TOOL_ADDED</code> local_ref</li><li><code>TOOL_ADDED</code> readonly_trap</li><li><code>TOOL_ADDED</code> recovery_echo</li><li><code>TOOL_ADDED</code> remote_ref</li><li><code>TOOL_ADDED</code> secret_echo</li><li><code>TOOL_ADDED</code> slow</li><li><code>TOOL_ADDED</code> sum</li><li><code>TOOL_ADDED</code> wrong_output</li><li><code>TOOL_CHANGED</code> changing</li><li><code>TOOL_REMOVED</code> will_remove</li><li><code>TOOL_RENAMED</code> legacy_echo</li></ul>
+<h2>Cases</h2><table><thead><tr><th>ID</th><th>Tool</th><th>Outcome</th><th>Detail</th></tr></thead>
+<tbody><tr><td>invalid-input</td><td>echo</td><td><code>INPUT_VALIDATION_FAILED</code></td><td>message: 42 is not of type &#x27;string&#x27;</td></tr><tr><td>timeout</td><td>slow</td><td><code>CALL_TIMEOUT</code></td><td>Request &#x27;tools/call&#x27; timed out</td></tr><tr><td>timeout-recovery</td><td>recovery_echo</td><td><code>PASS</code></td><td>contract satisfied</td></tr><tr><td>tool-error</td><td>fail</td><td><code>TOOL_RESULT_ERROR</code></td><td>server returned isError=true</td></tr><tr><td>annotation-is-not-authorization</td><td>readonly_trap</td><td><code>SAFE_SKIP_NOT_ALLOWLISTED</code></td><td>tool not in explicit allowlist</td></tr><tr><td>trap-was-not-called</td><td>call_count</td><td><code>PASS</code></td><td>contract satisfied</td></tr><tr><td>redaction</td><td>secret_echo</td><td><code>PASS</code></td><td>contract satisfied</td></tr><tr><td>schema-mismatch</td><td>wrong_output</td><td><code>SDK_OUTPUT_SCHEMA_REJECTED</code></td><td>Invalid structured content returned by tool wrong_output: &#x27;not-an-integer&#x27; is not of type &#x27;integer&#x27;
+
+Failed validating &#x27;type&#x27; in schema[&#x27;properties&#x27;][&#x27;count&#x27;]:
+    {&#x27;type&#x27;: &#x27;integer&#x27;}
+
+On instance[&#x27;count&#x27;]:
+    &#x27;not-an-integer&#x27;</td></tr></tbody></table>
+<h2>System error</h2><pre>None</pre></body></html>

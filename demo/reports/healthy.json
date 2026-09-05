@@ -1,0 +1,345 @@
+{
+  "cases": [
+    {
+      "arguments": {
+        "message": "hello"
+      },
+      "content": [
+        {
+          "text": "hello",
+          "type": "text"
+        }
+      ],
+      "detail": "contract satisfied",
+      "id": "echo-control",
+      "outcome": "PASS",
+      "structured_content": {
+        "message": "hello"
+      },
+      "tool": "echo"
+    },
+    {
+      "arguments": {
+        "a": 2,
+        "b": 3
+      },
+      "content": [
+        {
+          "text": "5",
+          "type": "text"
+        }
+      ],
+      "detail": "contract satisfied",
+      "id": "sum-control",
+      "outcome": "PASS",
+      "structured_content": {
+        "sum": 5
+      },
+      "tool": "sum"
+    }
+  ],
+  "connections_opened": 1,
+  "drift": [],
+  "schema_version": "1",
+  "server": "configured stdio server",
+  "session_restarts": 0,
+  "stderr": "",
+  "system_error": null,
+  "tools": [
+    {
+      "annotations": null,
+      "description": "Synthetic call_count fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "call_count",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "count"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic echo fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic fail fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "fail",
+      "output_schema": null,
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic html_echo fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "html_echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic local_ref fixture",
+      "input_schema": {
+        "$defs": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "local_ref",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "description": "Synthetic readonly_trap fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "readonly_trap",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "count"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic recovery_echo fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "name": "recovery_echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic remote_ref fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "name": "remote_ref",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "$ref": "https://example.invalid/schema.json"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic secret_echo fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token"
+        ],
+        "type": "object"
+      },
+      "name": "secret_echo",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "nested": {
+            "type": "object"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token",
+          "nested"
+        ],
+        "type": "object"
+      },
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic slow fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "seconds": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "seconds"
+        ],
+        "type": "object"
+      },
+      "name": "slow",
+      "output_schema": null,
+      "title": null
+    },
+    {
+      "annotations": null,
+      "description": "Synthetic sum fixture",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "a": {
+            "type": "integer"
+          },
+          "b": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "a",
+          "b"
+        ],
+        "type": "object"
+      },
+      "name": "sum",
+      "output_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "sum": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sum"
+        ],
+        "type": "object"
+      },
+      "title": null
+    }
+  ]
+}

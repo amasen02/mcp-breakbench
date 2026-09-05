@@ -1,0 +1,16 @@
+{
+  "allow_tools": ["echo", "slow", "recovery_echo", "fail", "call_count", "secret_echo", "wrong_output"],
+  "cases": [
+    {"arguments": {"message": 42}, "id": "invalid-input", "tool": "echo"},
+    {"arguments": {"seconds": 0.25}, "id": "timeout", "timeout_seconds": 0.05, "tool": "slow"},
+    {"arguments": {"message": "recovered"}, "id": "timeout-recovery", "tool": "recovery_echo"},
+    {"arguments": {}, "id": "tool-error", "tool": "fail"},
+    {"arguments": {}, "id": "annotation-is-not-authorization", "tool": "readonly_trap"},
+    {"arguments": {}, "id": "trap-was-not-called", "tool": "call_count"},
+    {"arguments": {"token": "demo-token-EXAMPLE-123456"}, "id": "redaction", "tool": "secret_echo"},
+    {"arguments": {}, "id": "schema-mismatch", "tool": "wrong_output"}
+  ],
+  "limits": {"default_timeout_seconds": 1, "max_cases": 20, "max_output_bytes": 32768, "max_stderr_bytes": 16384},
+  "redaction": {"extra_values": ["demo-token-EXAMPLE-123456"]},
+  "server": {"args": ["-m", "mcp_breakbench.demo_servers.fixture", "--mode", "current"], "command": "python"}
+}

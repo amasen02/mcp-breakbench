@@ -1,0 +1,1 @@
+“MCP failed” is not a diagnosis. `mcp-breakbench` receipts separate invalid input, timeout recovery, tool error, schema rejection, safe skips, redaction, and drift in a local fixture. https://github.com/amasen02/mcp-breakbench
